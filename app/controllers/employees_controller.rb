@@ -11,7 +11,8 @@ class EmployeesController < ApplicationController
   # GET /employees/1.json
   def show
     @employee = Employee.find(params[:id]);
-    @position = Position.select("id, nombre").where(:id => params[:id]);
+    @position = Position.select("nombre").where(:id => params[:position_id]);
+    @e= Employee.last
   end
 
   # GET /employees/new
@@ -77,6 +78,6 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:nombre, :apellido, :dni)
+      params.require(:employee).permit(:nombre, :apellido, :dni, :position_id)
     end
 end
