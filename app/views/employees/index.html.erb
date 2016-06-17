@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lista de Empleados</h1>
+
+<hr />
+<%= form_tag do %>
+   <%= label_tag "dni", "Buscar por dni" %>
+   <%= text_field_tag "dni", "" , :required=>true %>
+   <%= submit_tag "Buscar", {:type => "button", :id => "boton_buscar"} %>
+   <div id="respuesta"></div>
+<% end %>
+<%= javascript_include_tag "buscar_por_dni" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Dni</th>
+      <th>Puesto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.nombre %></td>
+        <td><%= employee.apellido %></td>
+        <td><%= employee.dni %></td>
+        <td><%= employee.position_id %></td>
+        <td><%= link_to 'Ver', employee %></td>
+        <td><%= link_to 'Editar', edit_employee_path(employee) %></td>
+        <td><%= link_to 'Eliminar', employee, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Empleado', new_employee_path %>
