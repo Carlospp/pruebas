@@ -10,9 +10,8 @@ class EmployeesController < ApplicationController
   # GET /employees/1
   # GET /employees/1.json
   def show
-    @employee = Employee.find(params[:id]);
-    @position = Position.select("nombre").where(:id => params[:position_id]);
-    @e= Employee.last
+    @empleado = Employee.find(params[:id]);
+    @e = Position.find(@empleado.position_id);
   end
 
   # GET /employees/new
