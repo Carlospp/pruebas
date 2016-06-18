@@ -4,14 +4,18 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    @employees = Employee.all.includes(:position)
+    #@employee.includes(:position)
   end
 
   # GET /employees/1
   # GET /employees/1.json
   def show
-    @empleado = Employee.find(params[:id]);
-    @e = Position.find(@empleado.position_id);
+    #@empleado = Employee.find(params[:id]);
+    #@e = Position.find(@empleado.position_id);
+
+    #parallamar 2 tablas employee y position
+    #@employee = Employee.find(params[:id]).join(:position).select("employees.*,position.nombre as position_name")
   end
 
   # GET /employees/new
@@ -72,7 +76,9 @@ class EmployeesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
+
       @employee = Employee.find(params[:id])
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

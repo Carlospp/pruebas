@@ -28,7 +28,7 @@
         <td><%= employee.nombre %></td>
         <td><%= employee.apellido %></td>
         <td><%= employee.dni %></td>
-        <td><%= @puesto_nombre.nombre %></td>
+        <td><%= employee.position.nombre %></td>
         <td><%= link_to 'Ver', employee %></td>
         <td><%= link_to 'Editar', edit_employee_path(employee) %></td>
         <td><%= link_to 'Eliminar', employee, method: :delete, data: { confirm: 'Está seguro?' } %></td>

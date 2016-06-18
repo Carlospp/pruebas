@@ -1,3 +1,3 @@
 class Position < ActiveRecord::Base
-  has_many :employee
+  has_many :employees
 end

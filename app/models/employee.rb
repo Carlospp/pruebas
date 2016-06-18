@@ -1,8 +1,6 @@
 class Employee < ActiveRecord::Base
 
 belongs_to :position
-attr_accessor :employee
-attr_accessor :position
 #Validaciones de nombre
  validates :nombre, :presence => {:message => "Usted debe ingresar un nombre"}, length: {minimum: 2, maximum: 50, :message => "El nombre debe tener entre 2 y 50 caracteres"}
  #Validaciones de apellido
